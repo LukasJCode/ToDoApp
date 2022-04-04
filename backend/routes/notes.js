@@ -26,8 +26,8 @@ router.route("/").get(function(req,res){
 });
 
 //Delete note with given id
-router.route("/:noteID").delete(function(req,res){
-    Note.deleteOne({_id : req.params.noteID})
+router.route("/:noteTitle").delete(function(req,res){
+    Note.deleteOne({title : req.params.noteTitle})
         .then(() => res.redirect("/notes"))
         .catch(err => res.status(400).json("Error: " + err));
 });

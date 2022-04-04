@@ -19,9 +19,10 @@ function App(){
             return [...prevNotes, note]
         });
     }
-    function deleteNote(id){
+    function deleteNote(id, title){
         setNotes((prevTasks) => {
             return prevTasks.filter((task, index) => {
+                axios.delete("http://localhost:5000/notes/" + title);
               return index !== id;
             });
           });
@@ -37,7 +38,7 @@ function App(){
                 content = {note.content}
                 onDelete={deleteNote}
                 />
-            )};
+            )}
             <Footer></Footer>
         </div>
     );
